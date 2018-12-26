@@ -7,7 +7,7 @@
 	compatible = "wrtnode,wrtnode2", "mediatek,mt7628an-soc";
 
 	chosen {
-		bootargs = "console=ttyS0,115200";
+		bootargs = "console=ttyS0,57600";
 	};
 
 	gpio-keys-polled {
@@ -57,7 +57,7 @@
 			partition@50000 {
 				compatible = "denx,uimage";
 				label = "firmware";
-				reg = <0x50000 0x1fb0000>;
+				reg = <0x50000 0x0800000>;
 			};
 		};
 	};
