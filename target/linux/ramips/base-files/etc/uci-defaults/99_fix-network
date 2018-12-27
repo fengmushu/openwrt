@@ -1,0 +1,42 @@
+#!/bin/sh
+#
+# Copyright (C) 2012 OpenWrt.org
+#
+
+. /lib/functions.sh
+
+fix_checksum() {
+	local kernel_size=$(sed -n 's/mtd[0-9]*: \([0-9a-f]*\).*"kernel".*/\1/p' /proc/mtd)
+
+	[ "$kernel_size" ] && mtd -c 0x$kernel_size fix$1 firmware
+}
+
+board=$(board_name)
+
+case "$board" in
+cy-swr1100 | \
+dch-m225 | \
+dir-645 | \
+dir-860l-b1)
+	fix_checksum seama
+	;;
+dlink,dap-1522-a1)
+	fix_checksum wrg
+	;;
+wrtnode2p)
+	# network
+	uci set network.usb0='interface'
+	uci set network.usb0.proto='dhcp'
+	uci set network.usb0.ifname='usb0'
+	uci set network.lan.ipaddr='192.168.3.1'
+	uci commit network
+
+	# firewall
+	uci set firewall.@zone[1].network='wan wan6 usb0'
+	uci commit firewall
+	;;
+gehua,ghl-r-001)
+	uci set network.lan.ipaddr='192.168.3.1'
+	uci commit network
+	;;
+esac
