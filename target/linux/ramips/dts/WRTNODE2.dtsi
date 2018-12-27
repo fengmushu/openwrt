@@ -75,10 +75,6 @@
 	status = "okay";
 };
 
-&i2c {
-	status = "okay";
-};
-
 &ethernet {
 	mtd-mac-address = <&factory 0x4>;
 	mediatek,portmap = "llllw";
