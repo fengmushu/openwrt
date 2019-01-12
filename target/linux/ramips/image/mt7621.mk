@@ -230,7 +230,7 @@ TARGET_DEVICES += iodata_wn-gx300gr
 
 define Device/k2p
   DTS := K2P
-  IMAGE_SIZE := $(ralink_default_fw_size_16M)
+  IMAGE_SIZE := $(ralink_default_fw_size_32M)
   DEVICE_TITLE := Phicomm K2P
 endef
 TARGET_DEVICES += k2p
