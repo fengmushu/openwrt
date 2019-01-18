@@ -34,6 +34,11 @@ wrtnode2p)
 	# firewall
 	uci set firewall.@zone[1].network='wan wan6 usb0'
 	uci commit firewall
+
+	# wireless
+	uci set wireless.radio0.disabled='0'
+	uci set wireless.default_radio0.ssid='CPE-RedTea'
+	uci commit wireless
 	;;
 gehua,ghl-r-001)
 	uci set network.lan.ipaddr='192.168.3.1'
