@@ -17,7 +17,7 @@ index e43a31e2e..f99093224 100644
  
 +	{ USB_DEVICE_AND_INTERFACE_INFO(ZTE_VENDOR_ID, 0x0579, 0xff, 0xff, 0xff),
 +	 .driver_info = RSVD(1) },
-+	{ USB_DEVICE_AND_INTERFACE_INFO(ZTE_VENDOR_ID, 0x0523, 0xff, 0xff, 0xff),
++	{ USB_DEVICE_AND_INTERFACE_INFO(ZTE_VENDOR_ID, 0x0532, 0xff, 0xff, 0xff),
 +	 .driver_info = RSVD(1) },
 +	{ USB_DEVICE_AND_INTERFACE_INFO(ZTE_VENDOR_ID, 0x0256, 0xff, 0xff, 0xff),
 +	 .driver_info = RSVD(1) },
