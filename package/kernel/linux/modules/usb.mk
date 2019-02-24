@@ -1271,6 +1271,19 @@ endef
 
 $(eval $(call KernelPackage,usb-net-cdc-subset))
 
+define KernelPackage/usb-net-gobinet
+  TITLE:=QMI GOBINET driver
+  KCONFIG:=CONFIG_USB_NET_GOBINET CONFIG_USB_NET_GOBISER
+  FILES:= $(LINUX_DIR)/drivers/$(USBNET_DIR)/GobiNet.ko
+  AUTOLOAD:=$(call AutoProbe,GobiNet)
+  $(call AddDepends/usb-net)
+endef
+
+define KernelPackage/usb-net-gobinet/description
+ QMI GOBINET driver for Qualcomm MSM based 4G LTE modems
+endef
+
+$(eval $(call KernelPackage,usb-net-gobinet))
 
 define KernelPackage/usb-net-qmi-wwan
   TITLE:=QMI WWAN driver
