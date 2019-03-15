@@ -631,6 +631,9 @@ ramips_board_detect() {
 	*"WRTnode2P")
 		name="wrtnode2p"
 		;;
+	*"G4303K_V1")
+		name="g4303k-v1"
+		;;
 	*"WSR-1166DHP")
 		name="wsr-1166"
 		;;

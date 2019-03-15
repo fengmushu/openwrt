@@ -235,6 +235,7 @@ ramips_setup_interfaces()
 	wrtnode|\
 	wrtnode2p | \
 	wrtnode2r | \
+	g4303k-v1 | \
 	youhua,wr1200js|\
 	zbt-wa05|\
 	zyxel,keenetic-extra-ii)

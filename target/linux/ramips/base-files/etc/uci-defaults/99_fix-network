@@ -23,7 +23,8 @@ dir-860l-b1)
 dlink,dap-1522-a1)
 	fix_checksum wrg
 	;;
-wrtnode2p)
+wrtnode2p |\
+g4303k-v1)
 	# network
 	uci set network.usb0='interface'
 	uci set network.usb0.proto='dhcp'

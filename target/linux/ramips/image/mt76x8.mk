@@ -382,6 +382,14 @@ define Device/wrtnode2p
 endef
 TARGET_DEVICES += wrtnode2p
 
+define Device/g4303k-v1
+  DTS := G4303K_V1
+  IMAGE_SIZE := $(ralink_default_fw_size_16M)
+  DEVICE_TITLE := G4303K V1
+  DEVICE_PACKAGES := kmod-usb2 kmod-usb-ohci kmod-usb-ledtrig-usbport
+endef
+TARGET_DEVICES += g4303k-v1
+
 define Device/wrtnode2r
   DTS := WRTNODE2R
   IMAGE_SIZE := $(ralink_default_fw_size_16M)
