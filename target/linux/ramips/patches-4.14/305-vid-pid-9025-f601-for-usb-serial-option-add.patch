@@ -1,0 +1,25 @@
+From 13f7f8263c4a0af09433ba21db40ce8dea88cac1 Mon Sep 17 00:00:00 2001
+From: fengmushu <fengmushu@gmail.com>
+Date: Wed, 13 Mar 2019 18:29:47 +0800
+Subject: [PATCH] VID,PID 9025:f601 for usb serial option add
+
+---
+ drivers/usb/serial/option.c | 2 ++
+ 1 file changed, 2 insertions(+)
+
+diff --git a/drivers/usb/serial/option.c b/drivers/usb/serial/option.c
+index 6c4b6f60d..e5b81e4d4 100644
+--- a/drivers/usb/serial/option.c
++++ b/drivers/usb/serial/option.c
+@@ -1080,6 +1080,8 @@ static const struct usb_device_id option_ids[] = {
+ 	/* u-blox products using Qualcomm vendor ID */
+ 	{ USB_DEVICE(QUALCOMM_VENDOR_ID, UBLOX_PRODUCT_R410M),
+ 	  .driver_info = RSVD(1) | RSVD(3) },
++	{ USB_DEVICE(QUALCOMM_VENDOR_ID, 0xf601), .driver_info = RSVD(4) | RSVD(3) },
++	{ USB_DEVICE(QUALCOMM_VENDOR_ID, 0x9025), .driver_info = RSVD(4) | RSVD(3) },
+ 	/* Quectel products using Quectel vendor ID */
+ 	{ USB_DEVICE(QUECTEL_VENDOR_ID, QUECTEL_PRODUCT_EC21),
+ 	  .driver_info = RSVD(4) },
+-- 
+2.20.1
+
