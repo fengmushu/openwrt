@@ -195,6 +195,8 @@ ramips_board_detect() {
 		;;
 	*"FireWRT")
 		name="firewrt"
+	*"Openwrt G41201K")
+		name="mt7620_g41201k"
 		;;
 	*"Fonera 2.0N")
 		name="fonera20n"
