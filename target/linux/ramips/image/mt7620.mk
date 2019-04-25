@@ -762,3 +762,11 @@ define Device/zte-q7
   DEVICE_PACKAGES := kmod-usb2 kmod-usb-ohci
 endef
 TARGET_DEVICES += zte-q7
+
+define Device/mt7620_g41201k
+  DTS := MT7620a_G41201K
+  IMAGE_SIZE := $(ralink_default_fw_size_16M)
+  DEVICE_TITLE := MT7620 G41201K Device
+  DEVICE_PACKAGES := kmod-mt76x2 kmod-usb2 kmod-usb-ohci kmod-sdhci-mt7620
+endef
+TARGET_DEVICES += mt7620_g41201k
