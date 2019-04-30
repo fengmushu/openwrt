@@ -195,6 +195,7 @@ ramips_board_detect() {
 		;;
 	*"FireWRT")
 		name="firewrt"
+		;;
 	*"Openwrt G41201K")
 		name="mt7620_g41201k"
 		;;
@@ -260,6 +261,9 @@ ramips_board_detect() {
 		;;
 	*"K2P")
 		name="k2p"
+		;;
+	*"MAC500F")
+		name="mac500f"
 		;;
 	*"M3")
 		name="m3"
