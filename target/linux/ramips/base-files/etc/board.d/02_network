@@ -365,6 +365,9 @@ ramips_setup_interfaces()
 	ubnt-erx-sfp)
 		ucidef_set_interfaces_lan_wan "lan0 lan1 lan2 lan3 lan4" "lan5"
 		;;
+	mac500f)
+		ucidef_set_interfaces_lan_wan "eth1 eth2 eth3 eth4" "eth5"
+		;;
 	vonets,var11n-300|\
 	wt1520-4M|\
 	wt1520-8M)
