@@ -149,6 +149,7 @@
 
 	mtd-mac-address = <&factory 0xe006>;
 
+	//switch mt7530
 	gmac0: mac@0 {
 		compatible = "mediatek,eth-mac";
 		mtd-mac-address = <&factory 0x22>;
@@ -168,11 +169,6 @@
 
 		// reset-gpios = <&gpio0 7 GPIO_ACTIVE_LOW>; //reset timing dose not fit well
 
-		ephy5: ethernet-phy@7 {
-			reg = <7>;
-			phy-mode = "rgmii-rxid";
-		};
-
 		mt7530: switch@0 {
 			compatible = "mediatek,mt7530";
 		    #address-cells = <1>;
@@ -185,7 +181,23 @@
 		    core-supply = <&reg_core>;
 		    io-supply = <&reg_io>;
 
-			dsa,mii-bus = <&mdio>;
+			// dsa,mii-bus = <&mdio>;
+			dsa,member = <0 0>;
+		};
+
+		ephy1: ethernet-phy@1 {
+			reg = <1>;
+			phy-mode = "rgmii-rxid";
+		};
+
+		ephy5: ethernet-phy@7 {
+			reg = <7>;
+			phy-mode = "rgmii-rxid";
+
+			fixed-link {
+				speed = <1000>;
+				full-duplex;
+			};
 		};
 	};
 };
@@ -199,42 +211,42 @@
 
 		port@0 {
 			reg = <0>;
-			// label = "lan0";
+			label = "eth1";
 			cpu = <&cpu_port0>;
 		};
 
 		port@1 {
 			reg = <1>;
-			// label = "lan1";
+			label = "eth2";
 			cpu = <&cpu_port0>;
 		};
 
 		port@2 {
 			reg = <2>;
-			// label = "lan2";
+			label = "eth3";
 			cpu = <&cpu_port0>;
 		};
 
 		port@3 {
 			reg = <3>;
-			// label = "lan3";
+			label = "eth4";
 			cpu = <&cpu_port0>;
 		};
 
 		port@4 {
 			reg = <4>;
-			// label = "lan4";
+			label = "eth5";
 			cpu = <&cpu_port0>;
 		};
 
 		port@5 {
 			reg = <5>;
-			// label = "lan5";
+			label = "eth8";
 			cpu = <&cpu_port0>;
 			phy-handle = <&ephy5>;
 
+			sfp = <&sfp5>;
        		managed = "in-band-status";
-       		sfp = <&sfp5>;
 
 			fixed-link {
 				speed = <1000>;
@@ -246,7 +258,7 @@
 			reg = <6>;
 			label = "cpu";
 			ethernet = <&gmac0>;
-			phy-mode = "rgmii";
+			phy-mode = "trgmii";
 
 			fixed-link {
 				speed = <1000>;
@@ -263,8 +275,4 @@
 			ralink,function = "gpio";
 		};
 	};
-};
-
-&xhci {
-	status = "okay";
 };
