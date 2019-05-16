@@ -1,10 +1,13 @@
-src-git packages https://git.openwrt.org/feed/packages.git
-src-git luci https://git.openwrt.org/project/luci.git
+src-git packages git@github.com:fengmushu/packages.git
 src-git routing https://git.openwrt.org/feed/routing.git
-src-git telephony https://git.openwrt.org/feed/telephony.git
+src-git telephony git@github.com:fengmushu/telephony.git
+src-git luci git@github.com:fengmushu/luci.git
+#src-git luci https://github.com/openwrt/luci.git
 #src-git video https://github.com/openwrt/video.git
 #src-git targets https://github.com/openwrt/targets.git
 #src-git management https://github.com/openwrt-management/packages.git
 #src-git oldpackages http://git.openwrt.org/packages.git
 #src-link custom /usr/src/openwrt/custom-feed
-src-git tempe git@github.com:fengmushu/tempe-a55.git
+#src-git tempe git@github.com:fengmushu/tempe-a55.git
+src-link tempe custom-feed/tempe-a55
+#src-link puppies custom-feed/puppies
