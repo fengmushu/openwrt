@@ -121,7 +121,7 @@
 &pinctrl {
 	state_default: pinctrl0 {
 		gpio {
-			ralink,group = "i2c", "uartf", "nd_sd", "wled";
+			ralink,group = "i2c", "uartf", "nd_sd", "wled", "rgmii2";
 			ralink,function = "gpio";
 		};
 	};
@@ -130,7 +130,7 @@
 &ethernet {
 	status = "okay";
 	pinctrl-names = "default";
-	pinctrl-0 = <&rgmii1_pins &rgmii2_pins &mdio_pins>;
+	pinctrl-0 = <&rgmii1_pins &mdio_pins>;
 	mediatek,portmap = "llllw";
 
 	port@5 {
