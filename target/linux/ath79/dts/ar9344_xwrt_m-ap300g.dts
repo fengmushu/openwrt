@@ -212,3 +212,37 @@
 		switch-phy-swap = <0>;
 	};
 };
+
+&eth0 {
+	status = "okay";
+
+	/* default for ar934x, except for 1000M */
+	pll-data = <0x06000000 0x00000101 0x00001616>;
+
+	phy-mode = "rgmii";
+	phy-handle = <&phy0>;
+
+	gmac-config {
+		device = <&gmac>;
+		rgmii-gmac0 = <1>;
+		rxd-delay = <1>;
+		rxdv-delay = <1>;
+	};
+
+	mdio2: mdio-ip18xx {
+		status = "okay";
+
+		compatible = "virtual,mdio-ip18xx";
+		#address-cells = <1>;
+		#size-cells = <0>;
+
+		phy-mask = <0>;
+		phy0: ethernet-phy@15 { 	/* Port10:01, Port9:02 */
+			reg = <15>;
+			phy-mode = "rgmii";
+
+			speed = <1000>;
+			full-duplex;
+		};
+	};
+};
