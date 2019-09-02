@@ -988,6 +988,17 @@ define Device/xwrt_csac
 endef
 TARGET_DEVICES += xwrt_csac
 
+define Device/xwrt_nxw1200gsp
+  ATH_SOC := qca9563
+  DEVICE_VENDOR := XWRT
+  DEVICE_MODEL := NXW1200GSP
+  KERNEL_SIZE := 1472k
+  IMAGE_SIZE := 16000k
+  IMAGE/sysupgrade.bin := append-rootfs | pad-rootfs | pad-to 14528k | append-kernel | append-metadata | check-size $$$$(IMAGE_SIZE)
+  DEVICE_PACKAGES := kmod-leds-reset kmod-ath10k-ct ath10k-firmware-qca9888-ct kmod-usb-core kmod-usb2 iptables-mod-conenat
+endef
+TARGET_DEVICES += xwrt_nxw1200gsp
+
 define Device/xwrt_m-ap300g
   ATH_SOC := ar9344
   DEVICE_VENDOR := XWRT
