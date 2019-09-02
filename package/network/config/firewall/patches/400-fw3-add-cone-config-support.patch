@@ -1,0 +1,91 @@
+From e86aea699cf815c748f2e054e74f05ef96e8c3ce Mon Sep 17 00:00:00 2001
+From: fengmushu <fengmushu@gmail.com>
+Date: Sun, 1 Sep 2019 20:16:07 +0800
+Subject: [PATCH] fw3 add cone config support
+
+---
+ options.c | 14 ++++++++++++++
+ options.h |  4 ++++
+ zones.c   | 14 ++++++++++++++
+ 3 files changed, 32 insertions(+)
+
+diff --git a/options.c b/options.c
+index c763d9e..47ac57c 100644
+--- a/options.c
++++ b/options.c
+@@ -1272,3 +1272,17 @@ fw3_address_to_string(struct fw3_address *address, bool allow_invert, bool as_ci
+ 
+ 	return buf;
+ }
++
++bool
++fw3_parse_cone_type(void *ptr, const char *val, bool is_list)
++{
++	if (strcmp(val, "full") && strcmp(val, "FULL")
++		&& strcmp(val, "ar") && strcmp(val, "AR")
++		&& strcmp(val, "pr") && strcmp(val, "PR")) {
++		return false;
++	}
++
++	*((char **)ptr) = (char *)val;
++
++	return true;
++}
+\ No newline at end of file
+diff --git a/options.h b/options.h
+index cffc01c..e69b5cc 100644
+--- a/options.h
++++ b/options.h
+@@ -343,6 +343,8 @@ struct fw3_zone
+ 
+ 	bool mtu_fix;
+ 
++	const char *cone_type;
++
+ 	struct list_head cthelpers;
+ 
+ 	int log;
+@@ -638,6 +640,8 @@ bool fw3_parse_options(void *s, const struct fw3_option *opts,
+ bool fw3_parse_blob_options(void *s, const struct fw3_option *opts,
+                             struct blob_attr *a, const char *name);
+ 
++bool fw3_parse_cone_type(void *ptr, const char *val, bool is_list);
++
+ const char * fw3_address_to_string(struct fw3_address *address,
+                                    bool allow_invert, bool as_cidr);
+ 
+diff --git a/zones.c b/zones.c
+index d29f6d7..e21eaad 100644
+--- a/zones.c
++++ b/zones.c
+@@ -95,6 +95,8 @@ const struct fw3_option fw3_zone_opts[] = {
+ 
+ 	FW3_LIST("__addrs",            address,  zone,     old_addrs),
+ 
++	FW3_OPT("cone_type",           cone_type, zone,    cone_type),
++
+ 	{ }
+ };
+ 
+@@ -710,6 +712,18 @@ print_zone_rule(struct fw3_ipt_handle *handle, struct fw3_state *state,
+ 					                    handle->family, false)) || first_dest;
+ 				     first_dest = false)
+ 				{
++					if (zone->cone_type) {
++						r = fw3_ipt_rule_new(handle);
++						fw3_ipt_rule_src_dest(r, msrc, mdest);
++						fw3_ipt_rule_target(r, "CONENAT");
++						fw3_ipt_rule_addarg(r, false, "--cone-nat-type", zone->cone_type);
++						fw3_ipt_rule_append(r, "zone_%s_postrouting", zone->name);
++						r = fw3_ipt_rule_new(handle);
++						fw3_ipt_rule_src_dest(r, msrc, mdest);
++						fw3_ipt_rule_target(r, "CONENAT");
++						fw3_ipt_rule_addarg(r, false, "--cone-nat-type", zone->cone_type);
++						fw3_ipt_rule_append(r, "zone_%s_prerouting", zone->name);
++					}
+ 					/* make UDP MASQUERADE random port */
+ 					struct fw3_protocol udp = { .protocol = 17 };
+ 					r = fw3_ipt_rule_new(handle);
+-- 
+2.20.1
+
