@@ -26,7 +26,7 @@
  		generic_handle_irq(ATH79_IP2_IRQ(1));
  	}
  }
-@@ -130,17 +130,17 @@ static void qca955x_ip3_irq_dispatch(str
+@@ -124,17 +124,17 @@ static void qca955x_ip3_irq_dispatch(str
  	}
  
  	if (status & QCA955X_EXT_INT_USB1) {
