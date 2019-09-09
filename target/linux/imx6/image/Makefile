@@ -195,7 +195,7 @@ TARGET_DEVICES += wandboard
 define Device/cubox-i
   DEVICE_VENDOR := SolidRun
   DEVICE_MODEL := CuBox-i
-  KERNEL := kernel-bin
+  KERNEL := kernel-bin | install-dtb
   UBOOT := mx6cuboxi
   BOOT_SCRIPT = bootscript-cubox
   DEVICE_NAME := cubox
