@@ -453,7 +453,8 @@ xwrt,g4303k-v1)
 	ucidef_set_led_switch "led_RJ45"  "led_RJ45"  "xwrt:led_RJ45"  "switch0" "0x1e"
 	ucidef_set_led_wlan "led_WIFI" "led_WIFI" "xwrt:led_WIFI" "phy0tpt"
 	;;
-xwrt,t-cpe1200k-v01)
+xwrt,t-cpe1200k-v01|\
+xwrt,t-cpe1201k-v01)
 	ucidef_set_led_switch "led_eth"  "led_eth"  "xwrt:blue:eth"  "switch0" "0xf"
 	set_wifi_led "xwrt:blue:wifi"
 	ucidef_set_rssimon "wlan0" "200000" "1"
