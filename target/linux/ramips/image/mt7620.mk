@@ -667,6 +667,16 @@ define Device/ohyeah_oy-0001
 endef
 TARGET_DEVICES += ohyeah_oy-0001
 
+define Device/xwrt_ms1200k
+  MTK_SOC := mt7620a
+  IMAGE_SIZE := 7872k
+  DEVICE_VENDOR := XWRT
+  DEVICE_MODEL := MS1200K
+  DEVICE_PACKAGES := kmod-mt76x2
+  SUPPORTED_DEVICES += xwrt_ms1200k
+endef
+TARGET_DEVICES += xwrt_ms1200k
+
 define Device/phicomm_k2g
   MTK_SOC := mt7620a
   IMAGE_SIZE := 7552k
