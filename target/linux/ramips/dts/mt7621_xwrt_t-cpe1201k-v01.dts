@@ -89,11 +89,16 @@
 			linux,code = <KEY_RESTART>;
 		};
 
-		wps {
-			label = "wps";
-			gpios = <&gpio0 12 GPIO_ACTIVE_LOW>;
-			linux,code = <KEY_WPS_BUTTON>;
-		};
+		// wps {
+		// 	label = "wps";
+		// 	gpios = <&gpio0 12 GPIO_ACTIVE_LOW>;
+		// 	linux,code = <KEY_WPS_BUTTON>;
+		// };
+	};
+
+	humidity_sensor {
+		compatible = "dht11";
+		gpios = <&gpio0 12 GPIO_ACTIVE_HIGH>;
 	};
 
 	gpio_export {
@@ -186,14 +191,14 @@
 	mtd-mac-address = <&factory 0xe000>;
 };
 
-&uartlite2 {
+&uartlite3 {
 	status = "okay";
 };
 
 &pinctrl {
 	state_default: pinctrl0 {
 		gpio {
-			ralink,group = "wdt", "rgmii2", "uart3";
+			ralink,group = "wdt", "rgmii2", "uart2";
 			ralink,function = "gpio";
 		};
 	};
