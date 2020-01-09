@@ -23,31 +23,6 @@
 	leds {
 		compatible = "gpio-leds";
 
-		rssi1 {
-			label = "xwrt:blue:rssi1";
-			gpios = <&gpio0 30 GPIO_ACTIVE_LOW>;
-		};
-
-		rssi2 {
-			label = "xwrt:blue:rssi2";
-			gpios = <&gpio0 29 GPIO_ACTIVE_LOW>;
-		};
-
-		rssi3 {
-			label = "xwrt:blue:rssi3";
-			gpios = <&gpio0 28 GPIO_ACTIVE_LOW>;
-		};
-
-		rssi4 {
-			label = "xwrt:blue:rssi4";
-			gpios = <&gpio1 0 GPIO_ACTIVE_LOW>;
-		};
-
-		rssi5 {
-			label = "xwrt:blue:rssi5";
-			gpios = <&gpio1 1 GPIO_ACTIVE_LOW>;
-		};
-
 		led_wps: wps {
 			label = "xwrt:blue:wps";
 			gpios = <&gpio0 8 GPIO_ACTIVE_LOW>;
@@ -89,16 +64,16 @@
 			linux,code = <KEY_RESTART>;
 		};
 
-		// wps {
-		// 	label = "wps";
-		// 	gpios = <&gpio0 12 GPIO_ACTIVE_LOW>;
-		// 	linux,code = <KEY_WPS_BUTTON>;
-		// };
+		wps {
+			label = "wps";
+			gpios = <&gpio0 12 GPIO_ACTIVE_LOW>;
+			linux,code = <KEY_WPS_BUTTON>;
+		};
 	};
 
 	humidity_sensor {
 		compatible = "dht11";
-		gpios = <&gpio0 12 GPIO_ACTIVE_HIGH>;
+		gpios = <&gpio0 30 GPIO_ACTIVE_HIGH>;
 	};
 
 	gpio_export {
