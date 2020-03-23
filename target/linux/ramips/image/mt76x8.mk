@@ -298,6 +298,14 @@ define Device/wrtnode2p
 endef
 TARGET_DEVICES += wrtnode2p
 
+define Device/xwrt-tcpe303k
+  DTS := xwrt-tcpe303k
+  IMAGE_SIZE := $(ralink_default_fw_size_16M)
+  DEVICE_TITLE := X-WRT TCPE303K
+  DEVICE_PACKAGES := kmod-usb2 kmod-usb-ohci kmod-usb-ledtrig-usbport
+endef
+TARGET_DEVICES += xwrt-tcpe303k
+
 define Device/wrtnode2r
   DTS := WRTNODE2R
   IMAGE_SIZE := $(ralink_default_fw_size_16M)
