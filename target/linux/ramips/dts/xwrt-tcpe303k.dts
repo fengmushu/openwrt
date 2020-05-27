@@ -27,7 +27,20 @@
 		};
 	}; 
 
-	
+	gpio-i2c {
+		compatible = "i2c-gpio";
+
+		gpios = <&gpio0 5 0 /* sda */
+			 &gpio0 4 0 /* scl */
+			>;
+
+		i2c-gpio,sda-open-drain;
+		i2c-gpio,scl-open-drain;
+		i2c-gpio,delay-us = <2>;	/* ~100 kHz */
+
+		#address-cells = <1>;
+		#size-cells = <0>;
+	};
 };
 
 &spi0 {
@@ -78,8 +91,8 @@
         status = "okay";
 };
 
-&i2c {
-        status = "okay";
+&gpio-i2c {
+	status = "okay";
 
 	pca9554: pca9554@3f {
 		compatible = "nxp,pca9554";
@@ -101,7 +114,7 @@
 &pinctrl {
 	state_default: pinctrl0 {
 		gpio {
-			ralink,group = "i2s", "p0led_an", "p2led_an", "p3led_an", "p4led_an", "wled_an", "gpio", "refclk";
+			ralink,group = "i2c", "i2s", "p0led_an", "p2led_an", "p3led_an", "p4led_an", "wled_an", "gpio", "refclk";
 			ralink,function = "gpio";
 		};
 	};
