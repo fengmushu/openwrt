@@ -29,6 +29,7 @@
 
 	gpio-i2c {
 		compatible = "i2c-gpio";
+		status = "okay";
 
 		gpios = <&gpio0 5 0 /* sda */
 			 &gpio0 4 0 /* scl */
@@ -40,6 +41,13 @@
 
 		#address-cells = <1>;
 		#size-cells = <0>;
+
+		pca9554: pca9554@3f {
+			compatible = "nxp,pca9554";
+			reg = <0x74>;
+			gpio-controller;
+			#gpio-cells = <2>;
+		};
 	};
 };
 
@@ -89,17 +97,6 @@
 
 &uart1 {
         status = "okay";
-};
-
-&gpio-i2c {
-	status = "okay";
-
-	pca9554: pca9554@3f {
-		compatible = "nxp,pca9554";
-		reg = <0x74>;
-		gpio-controller;
-		#gpio-cells = <2>;
-	};
 };
 
 &ethernet {
