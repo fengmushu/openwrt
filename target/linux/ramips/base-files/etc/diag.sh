@@ -325,6 +325,9 @@ get_status_led() {
 	wrtnode)
 		status_led="wrtnode:blue:indicator"
 		;;
+	iwg-300k-*)
+		status_led="iwg:green:indicator"
+		;;
 	wt3020-4M|\
 	wt3020-8M)
 		status_led="wt3020:blue:power"

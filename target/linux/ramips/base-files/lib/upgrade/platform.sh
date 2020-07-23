@@ -199,6 +199,7 @@ platform_check_image() {
 	wrtnode|\
 	wrtnode2r |\
 	wrtnode2p |\
+	iwg-300k-* |\
 	wsr-600|\
 	wt1520-4M|\
 	wt1520-8M|\

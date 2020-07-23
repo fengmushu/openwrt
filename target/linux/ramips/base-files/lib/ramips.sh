@@ -640,6 +640,9 @@ ramips_board_detect() {
 	*"WRTnode2P")
 		name="wrtnode2p"
 		;;
+	*"IWG-300K-BE")
+		name="iwg-300k-be"
+		;;
 	*"WSR-1166DHP")
 		name="wsr-1166"
 		;;
