@@ -11,7 +11,7 @@
 	model = "IWG-300K-BE";
 	
 	chosen {
-		bootargs = "console=ttyS0,115200";
+		bootargs = "console=ttyS0,57600";
 	};
 
 	gpio-keys-polled {
