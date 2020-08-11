@@ -9,12 +9,12 @@ board=$(board_name)
 
 case "$board" in
 	iwg-300k-*)
-		uci set network.wan.ifname='wlan0'
+		uci set network.wan.ifname='eth0'
 		uci set network.wan.proto='dhcp'
 		uci set network.lan='interface'
 		uci set network.lan.type='bridge'
 		uci set network.lan.proto='static'
-		uci set network.lan.ifname='eth0'
+		uci set network.lan.ifname='wlan0'
 		uci set network.@switch[0].enable_vlan='0'
 		uci commit
 		;;
